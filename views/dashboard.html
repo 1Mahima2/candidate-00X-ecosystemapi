@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enrollment Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.x/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-6">
+  <h1 class="text-2xl font-bold mb-4">Enrollment Dashboard</h1>
+
+  <div id="dashboard">
+    <p class="mb-2">Total Enrollments: <span id="total">Loading...</span></p>
+    <p class="mb-2">Today's Enrollments: <span id="today">Loading...</span></p>
+
+    <h2 class="text-xl font-semibold mt-6 mb-2">Recent Transactions</h2>
+    <ul id="recent" class="bg-white p-4 rounded shadow"></ul>
+  </div>
+
+  <script>
+    async function loadDashboard() {
+      try {
+        const res = await fetch('/api/dashboard');
+        const data = await res.json();
+
+        document.getElementById('total').textContent = data.totalAllTime;
+        document.getElementById('today').textContent = data.totalToday;
+
+        const list = document.getElementById('recent');
+        data.recent.slice(0, 5).forEach(entry => {
+          const li = document.createElement('li');
+          li.className = "border-b py-1";
+          li.textContent = `${entry.email} from ${entry.source} → [${entry.destinations.join(", ")}] on ${entry.date}`;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.error("Failed to load dashboard", err);
+      }
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>
