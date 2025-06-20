@@ -23,6 +23,11 @@ app.use(dashboardRoutes);
 
 const path = require("path");
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Ecosystem API Layer');
+});
+
+
 app.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "dashboard.html"));
 });
