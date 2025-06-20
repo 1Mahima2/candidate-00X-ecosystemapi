@@ -1,0 +1,21 @@
+# Node modules (should never be committed)
+node_modules/
+
+# Environment variable files
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# SQLite database files (optional — only if you don't want to commit the DB)
+*.sqlite
+*.db
+
+# Optional: IDE/editor files
+.vscode/
+.idea/
