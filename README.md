@@ -200,12 +200,6 @@ node_modules/ and .env are excluded via .gitignore
 
 ---
 
-### ✅ Next Steps
+Deployed URL
 
-1. **Replace** the `your-ecosystem-api.onrender.com` link with your actual Render URL.
-2. **Paste** this into your `README.md` file.
-3. **Push** to GitHub:
-   
-   git add README.md
-   git commit -m "Added full project README"
-   git push origin main
+https://candidate-00x-ecosystemapi.onrender.com
